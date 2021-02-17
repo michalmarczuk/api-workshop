@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cp restored-db.json db.json && json-server-auth db.json"
+    "start": "cp restored-db.json db.json && node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "json-server": "^0.16.2",
-    "json-server-auth": "^2.0.2"
+    "body-parser": "^1.19.0",
+    "jsonwebtoken": "^8.1.0"
   }
 }

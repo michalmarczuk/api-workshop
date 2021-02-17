@@ -1,11 +1,4 @@
 {
-  "users": [
-    {
-      "id": 666,
-      "email": "test@mail.com",
-      "password": "doopa1234"
-    }
-  ],
   "people": [
     {
       "id": 1,

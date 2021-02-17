@@ -1,11 +1,4 @@
 {
-  "users": [
-    {
-      "id": 666,
-      "email": "test@mail.com",
-      "password": "doopa1234"
-    }
-  ],
   "people": [
     {
       "id": 1,
@@ -14,10 +7,6 @@
     {
       "id": 2,
       "name": "Grazyna"
-    },
-    {
-      "id": 5,
-      "name": "Jacek"
     },
     {
       "name": "Dżon",
