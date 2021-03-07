@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cp restored-db.json db.json && node server.js"
+    "start": "cp dbBackup.json db.json && node server.js"
   },
   "author": "",
   "license": "ISC",
