@@ -20,7 +20,7 @@
             var i = Math.floor(Math.random() * 3);
             return banks[i];
           },
-          amount: '${{integer(100, 10000)}}'
+          amount: '{{integer(100, 10000)}}'
         }
       ]
     }

@@ -45,7 +45,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$7458"
+          "amount": 7458
         }
       ]
     },
@@ -94,7 +94,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$2751"
+          "amount": 2751
         }
       ]
     },
@@ -110,7 +110,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$1972"
+          "amount": 1972
         }
       ]
     },
@@ -148,7 +148,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$6886"
+          "amount": 6886
         }
       ]
     },
@@ -219,7 +219,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$5665"
+          "amount": 5665
         }
       ]
     },
@@ -235,7 +235,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$3416"
+          "amount": 3416
         }
       ]
     },
@@ -251,7 +251,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$6682"
+          "amount": 6682
         }
       ]
     },
@@ -300,7 +300,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$7611"
+          "amount": 7611
         }
       ]
     },
@@ -316,7 +316,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$6739"
+          "amount": 6739
         }
       ]
     },
@@ -365,7 +365,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$1913"
+          "amount": 1913
         }
       ]
     },
@@ -381,7 +381,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$3555"
+          "amount": 3555
         }
       ]
     },
@@ -397,7 +397,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$7841"
+          "amount": 7841
         }
       ]
     },
@@ -413,7 +413,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$8492"
+          "amount": 8492
         }
       ]
     },
@@ -440,7 +440,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$8680"
+          "amount": 8680
         }
       ]
     },
@@ -467,7 +467,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$4046"
+          "amount": 4046
         }
       ]
     },
@@ -494,7 +494,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$7847"
+          "amount": 7847
         }
       ]
     },
@@ -532,7 +532,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$7387"
+          "amount": 7387
         }
       ]
     },
@@ -559,7 +559,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$9988"
+          "amount": 9988
         }
       ]
     },
@@ -608,7 +608,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$3559"
+          "amount": 3559
         }
       ]
     },
@@ -624,7 +624,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$9211"
+          "amount": 9211
         }
       ]
     },
@@ -640,7 +640,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$8346"
+          "amount": 8346
         }
       ]
     },
@@ -656,7 +656,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$9778"
+          "amount": 9778
         }
       ]
     },
@@ -672,7 +672,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$1318"
+          "amount": 1318
         }
       ]
     },
@@ -688,7 +688,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$2274"
+          "amount": 2274
         }
       ]
     },
@@ -704,7 +704,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$831"
+          "amount": 831
         }
       ]
     },
@@ -742,7 +742,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$2836"
+          "amount": 2836
         }
       ]
     },
@@ -780,7 +780,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$6757"
+          "amount": 6757
         }
       ]
     },
@@ -829,7 +829,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$4482"
+          "amount": 4482
         }
       ]
     },
@@ -845,7 +845,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$6757"
+          "amount": 6757
         }
       ]
     },
@@ -883,7 +883,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$5812"
+          "amount": 5812
         }
       ]
     },
@@ -899,7 +899,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$8610"
+          "amount": 8610
         }
       ]
     },
@@ -926,7 +926,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$1534"
+          "amount": 1534
         }
       ]
     },
@@ -942,7 +942,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$3810"
+          "amount": 3810
         }
       ]
     },
@@ -958,7 +958,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$1727"
+          "amount": 1727
         }
       ]
     },
@@ -974,7 +974,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$9006"
+          "amount": 9006
         }
       ]
     },
@@ -990,7 +990,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$8534"
+          "amount": 8534
         }
       ]
     },
@@ -1006,7 +1006,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$1500"
+          "amount": 1500
         }
       ]
     },
@@ -1022,7 +1022,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$5767"
+          "amount": 5767
         }
       ]
     },
@@ -1071,7 +1071,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$8558"
+          "amount": 8558
         }
       ]
     },
@@ -1087,7 +1087,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$2906"
+          "amount": 2906
         }
       ]
     },
@@ -1125,7 +1125,7 @@
       "credits": [
         {
           "bank": "Scrooge McDuck Bank",
-          "amount": "$3057"
+          "amount": 3057
         }
       ]
     },
@@ -1163,7 +1163,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$9562"
+          "amount": 9562
         }
       ]
     },
@@ -1179,7 +1179,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$8676"
+          "amount": 8676
         }
       ]
     },
@@ -1217,7 +1217,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$7085"
+          "amount": 7085
         }
       ]
     },
@@ -1233,7 +1233,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$166"
+          "amount": 166
         }
       ]
     },
@@ -1282,7 +1282,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$7367"
+          "amount": 7367
         }
       ]
     },
@@ -1298,7 +1298,7 @@
       "credits": [
         {
           "bank": "Happy bank",
-          "amount": "$2467"
+          "amount": 2467
         }
       ]
     },
@@ -1325,7 +1325,7 @@
       "credits": [
         {
           "bank": "National Bank",
-          "amount": "$9761"
+          "amount": 9761
         }
       ]
     },
