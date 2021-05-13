@@ -67,6 +67,25 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     }
 })
 
+server.post('/people', (req, res, next) => {
+    const requiredParams = ['name', 'age', 'gender', 'phone', 'address', 'credits'];
+    const invalidParams = [];
+    requiredParams.forEach((requiredParam) => {
+        if (!req.body[requiredParam]) {
+            invalidParams.push(requiredParam);
+        }
+    });
+
+    if (invalidParams.length) {
+        const status = 400;
+        const message = `Bad Request. Required params missing: ${invalidParams.join(', ')}`;
+        res.status(status).json({ status, message });
+        return;
+    } else {
+        next();
+    }
+});
+
 server.use(router);
 
 server.listen(8001, () => {
