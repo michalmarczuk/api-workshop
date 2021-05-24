@@ -2,6 +2,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const jsonServer = require('json-server');
 const jwt = require('jsonwebtoken');
+const { body, validationResult } = require('express-validator');
 
 const server = jsonServer.create();
 const router = jsonServer.router('./db.json');
@@ -67,24 +68,25 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     }
 })
 
-server.post('/people', (req, res, next) => {
-    const requiredParams = ['name', 'age', 'gender', 'phone', 'address', 'credits'];
-    const invalidParams = [];
-    requiredParams.forEach((requiredParam) => {
-        if (!req.body[requiredParam]) {
-            invalidParams.push(requiredParam);
+server.post('/people',
+    body('age').isNumeric(),
+    body('name').isLength({ min: 3 }),
+    body('gender').isIn(['male', 'female']),
+    body('company').optional().isLength({ min: 1 }),
+    body('email').isEmail(),
+    body('phone').matches(/\d{3}-\d{3}-\d{3}/g),
+    body('address').isLength({ min: 10 }),
+    body('credits').isArray(),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const status = 400;
+            const invalidParams = errors.array().map(error => error.param);
+            const message = `Missing param or invalid value: ${invalidParams.join(', ')}`
+            return res.status(status).json({ status, message });
         }
-    });
-
-    if (invalidParams.length) {
-        const status = 400;
-        const message = `Bad Request. Required params missing: ${invalidParams.join(', ')}`;
-        res.status(status).json({ status, message });
-        return;
-    } else {
         next();
-    }
-});
+    });
 
 server.use(router);
 
