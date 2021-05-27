@@ -1,15 +1,16 @@
 const fs = require('fs');
-const bodyParser = require('body-parser');
+const express = require('express');
 const jsonServer = require('json-server');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 
 const server = jsonServer.create();
-const router = jsonServer.router('./db.json');
+const dbPath = './db.json';
+const router = jsonServer.router(dbPath);
 const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'));
 
-server.use(bodyParser.urlencoded({extended: true}));
-server.use(bodyParser.json());
+server.use(express.urlencoded({extended: true}));
+server.use(express.json());
 server.use(jsonServer.defaults());
 
 const SECRET_KEY = '123456789';
@@ -84,6 +85,9 @@ server.post('/people',
             const invalidParams = errors.array().map(error => error.param);
             const message = `Missing param or invalid value: ${invalidParams.join(', ')}`
             return res.status(status).json({ status, message });
+        } else if (JSON.parse(fs.readFileSync(dbPath)).people.some(p => p.name === req.body.name)) {
+            const status = 409;
+            return res.status(status).json({ status, message: 'Person already exist' });
         }
         next();
     });
