@@ -72,10 +72,10 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
 server.post('/people',
     body('age').isNumeric(),
     body('name').isLength({ min: 3 }),
-    body('gender').isIn(['male', 'female']),
+    body('gender').isIn(['Male', 'Female']),
     body('company').optional().isLength({ min: 1 }),
     body('email').isEmail(),
-    body('phone').matches(/\d{3}-\d{3}-\d{3}/g),
+    body('phone').matches(/\d{3}-\d{3}-\d{3}/),
     body('address').isLength({ min: 10 }),
     body('credits').isArray(),
     (req, res, next) => {
@@ -87,7 +87,7 @@ server.post('/people',
             return res.status(status).json({ status, message });
         } else if (JSON.parse(fs.readFileSync(dbPath)).people.some(p => p.name === req.body.name)) {
             const status = 409;
-            return res.status(status).json({ status, message: 'Person already exist' });
+            return res.status(status).json({ status, message: 'Person already exists' });
         }
         next();
     });
