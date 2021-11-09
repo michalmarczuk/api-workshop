@@ -69,7 +69,7 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     }
 })
 
-server.post('/people',
+const peopleRequiredParamsValidation = [
     body('age').isNumeric(),
     body('name').isLength({ min: 3 }),
     body('gender').isIn(['Male', 'Female']),
@@ -78,19 +78,41 @@ server.post('/people',
     body('phone').matches(/\d{3}-\d{3}-\d{3}/),
     body('address').isLength({ min: 10 }),
     body('credits').isArray(),
-    (req, res, next) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            const status = 400;
-            const invalidParams = errors.array().map(error => error.param);
-            const message = `Missing param or invalid value: ${invalidParams.join(', ')}`
-            return res.status(status).json({ status, message });
-        } else if (JSON.parse(fs.readFileSync(dbPath)).people.some(p => p.name === req.body.name)) {
-            const status = 409;
-            return res.status(status).json({ status, message: 'Person already exists' });
-        }
-        next();
-    });
+]
+
+const validatePeopleRequest = (req) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        const invalidParams = errors.array().map(error => error.param);
+        return { status: 400, message: `Missing param or invalid value: ${invalidParams.join(', ')}` };
+    } else if (JSON.parse(fs.readFileSync(dbPath)).people.some(p => p.name === req.body.name)) {
+        return { status: 409, message: 'Person already exists' };
+    }
+
+    return { status: 200, message: 'OK' }
+}
+
+server.post('/people', peopleRequiredParamsValidation, (req, res, next) => {
+    const validatePeopleRequestResult = validatePeopleRequest(req);
+    if (validatePeopleRequestResult.status !== 200) {
+        return res.status(validatePeopleRequestResult.status).json(validatePeopleRequestResult);
+    }
+
+    next();
+});
+
+server.put(/\/people\/.*/, peopleRequiredParamsValidation, (req, res, next) => {
+    const validatePeopleRequestResult = validatePeopleRequest(req);
+    if (validatePeopleRequestResult.status !== 200) {
+        return res.status(validatePeopleRequestResult.status).json(validatePeopleRequestResult);
+    }
+
+    next();
+});
+
+
+// TODO: patch people: validation below
+// postPutValidation.map(rule => rule.optional())
 
 server.use(router);
 

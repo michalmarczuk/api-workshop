@@ -7,10 +7,13 @@
       id: '{{objectId()}}',
       age: '{{integer(20, 40)}}',
       name: '{{firstName()}} {{surname()}}',
-      gender: '{{gender()}}',
+      gender: function (generator) {
+        var gender = generator.gender();
+        return `${gender.charAt(0).toUpperCase()}${gender.slice(1)}`;
+      },
       company: '{{company().toUpperCase()}}',
       email: '{{email()}}',
-      phone: '+1 {{phone()}}',
+      phone: '{{phone("xxx-xxx-xxx")}}',
       address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
       credits: [
         '{{repeat(0, 1)}}',
