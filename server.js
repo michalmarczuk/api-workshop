@@ -69,7 +69,7 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     }
 })
 
-const peopleRequiredParamsValidation = [
+const customerRequiredParamsValidation = [
     body('age').isNumeric(),
     body('name').isLength({ min: 3 }),
     body('gender').isIn(['Male', 'Female']),
@@ -80,38 +80,38 @@ const peopleRequiredParamsValidation = [
     body('credits').isArray(),
 ]
 
-const validatePeopleRequest = (req) => {
+const validateCustomerRequest = (req) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         const invalidParams = errors.array().map(error => error.param);
         return { status: 400, message: `Missing param or invalid value: ${invalidParams.join(', ')}` };
-    } else if (JSON.parse(fs.readFileSync(dbPath)).people.some(p => p.name === req.body.name)) {
-        return { status: 409, message: 'Person already exists' };
+    } else if (JSON.parse(fs.readFileSync(dbPath)).customer.some(p => p.name === req.body.name)) {
+        return { status: 409, message: 'Customer already exists' };
     }
 
     return { status: 200, message: 'OK' }
 }
 
-server.post('/people', peopleRequiredParamsValidation, (req, res, next) => {
-    const validatePeopleRequestResult = validatePeopleRequest(req);
-    if (validatePeopleRequestResult.status !== 200) {
-        return res.status(validatePeopleRequestResult.status).json(validatePeopleRequestResult);
+server.post('/customer', customerRequiredParamsValidation, (req, res, next) => {
+    const validateCustomerRequestResult = validateCustomerRequest(req);
+    if (validateCustomerRequestResult.status !== 200) {
+        return res.status(validateCustomerRequestResult.status).json(validateCustomerRequestResult);
     }
 
     next();
 });
 
-server.put(/\/people\/.*/, peopleRequiredParamsValidation, (req, res, next) => {
-    const validatePeopleRequestResult = validatePeopleRequest(req);
-    if (validatePeopleRequestResult.status !== 200) {
-        return res.status(validatePeopleRequestResult.status).json(validatePeopleRequestResult);
+server.put(/\/customer\/.*/, customerRequiredParamsValidation, (req, res, next) => {
+    const validateCustomerRequestResult = validateCustomerRequest(req);
+    if (validateCustomerRequestResult.status !== 200) {
+        return res.status(validateCustomerRequestResult.status).json(validateCustomerRequestResult);
     }
 
     next();
 });
 
 
-// TODO: patch people: validation below
+// TODO: patch customer: validation below
 // postPutValidation.map(rule => rule.optional())
 
 server.use(router);
