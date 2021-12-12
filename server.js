@@ -2,7 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const jsonServer = require('json-server');
 const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
+const { body, validationResult, matchedData } = require('express-validator');
 
 const server = jsonServer.create();
 const dbPath = './db.json';
@@ -69,21 +69,39 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => {
     }
 })
 
+server.use(/.*/, (req, res, next) => {
+    console.log('*********** Request ***********');
+    console.log(`[${req.method}] ${req.baseUrl}`);
+    console.log(req.body);
+    next();
+})
+
 const customerRequiredParamsValidation = [
     body('age').isNumeric(),
-    body('name').isLength({ min: 3 }),
-    body('gender').isIn(['Male', 'Female']),
-    body('company').optional().isLength({ min: 1 }),
+    body('name').isString().isLength({ min: 3 }),
+    body('gender').isString().isIn(['Male', 'Female']),
+    body('company').isString().optional().isLength({ min: 1 }),
     body('email').isEmail(),
-    body('phone').matches(/\d{3}-\d{3}-\d{3}/),
-    body('address').isLength({ min: 10 }),
+    body('phone').isString().matches(/\d{3}-\d{3}-\d{3}/),
+    body('address').isString().isLength({ min: 10 }),
     body('credits').isArray(),
+]
+
+const customerOptionalParamsValidation = [
+    body('age').optional().isNumeric(),
+    body('name').optional().isLength({ min: 3 }),
+    body('gender').optional().isIn(['Male', 'Female']),
+    body('company').optional().optional().isLength({ min: 1 }),
+    body('email').optional().isEmail(),
+    body('phone').optional().matches(/\d{3}-\d{3}-\d{3}/),
+    body('address').optional().isLength({ min: 10 }),
+    body('credits').optional().isArray(),
 ]
 
 const validateCustomerRequest = (req) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        const invalidParams = errors.array().map(error => error.param);
+        const invalidParams = [...new Set(errors.array().map(error => error.param))];
         return { status: 400, message: `Missing param or invalid value: ${invalidParams.join(', ')}` };
     } else if (JSON.parse(fs.readFileSync(dbPath)).customer.some(p => p.name === req.body.name)) {
         return { status: 409, message: 'Customer already exists' };
@@ -98,6 +116,7 @@ server.post('/customer', customerRequiredParamsValidation, (req, res, next) => {
         return res.status(validateCustomerRequestResult.status).json(validateCustomerRequestResult);
     }
 
+    req.body = matchedData(req, { includeOptionals: false });
     next();
 });
 
@@ -107,12 +126,19 @@ server.put(/\/customer\/.*/, customerRequiredParamsValidation, (req, res, next) 
         return res.status(validateCustomerRequestResult.status).json(validateCustomerRequestResult);
     }
 
+    req.body = matchedData(req, { includeOptionals: false });
     next();
 });
 
+server.patch(/\/customer\/.*/, customerOptionalParamsValidation, (req, res, next) => {
+    const validateCustomerRequestResult = validateCustomerRequest(req);
+    if (validateCustomerRequestResult.status !== 200) {
+        return res.status(validateCustomerRequestResult.status).json(validateCustomerRequestResult);
+    }
 
-// TODO: patch customer: validation below
-// postPutValidation.map(rule => rule.optional())
+    req.body = matchedData(req, { includeOptionals: false });
+    next();
+});
 
 server.use(router);
 
